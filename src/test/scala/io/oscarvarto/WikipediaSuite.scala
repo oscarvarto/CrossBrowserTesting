@@ -1,12 +1,11 @@
 package io.oscarvarto
 
-import org.scalatest.flatspec.AnyFlatSpecLike
 import org.scalatest.funsuite.AnyFunSuiteLike
 import org.scalatest.matchers.should
 import org.scalatest.tags.{ChromeBrowser, FirefoxBrowser, SafariBrowser}
 import org.scalatestplus.selenium.{Chrome, Driver, Firefox, Safari, WebBrowser}
 
-trait WikipediaSpec extends AnyFunSuiteLike with should.Matchers {
+trait WikipediaSuite extends AnyFunSuiteLike with should.Matchers {
   this: WebBrowser with Driver =>
 
   test("Wikipedia should have correct title") {
@@ -17,10 +16,10 @@ trait WikipediaSpec extends AnyFunSuiteLike with should.Matchers {
 }
 
 @ChromeBrowser
-class ChromeWikipediaSpec extends WikipediaSpec with Chrome
+class ChromeWikipediaSuite extends WikipediaSuite with Chrome
 
 @FirefoxBrowser
-class FirefoxWikipediaSpec extends WikipediaSpec with Firefox
+class FirefoxWikipediaSuite extends WikipediaSuite with Firefox
 
 @SafariBrowser
-class SafariWikipediaSpec extends WikipediaSpec with Safari
+class SafariWikipediaSuite extends WikipediaSuite with Safari
