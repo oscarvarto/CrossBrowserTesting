@@ -2,8 +2,8 @@ package io.oscarvarto
 
 import org.scalatest.funsuite.AnyFunSuiteLike
 import org.scalatest.matchers.should
-import org.scalatest.tags.{ChromeBrowser, FirefoxBrowser, SafariBrowser}
-import org.scalatestplus.selenium.{Chrome, Driver, Firefox, Safari, WebBrowser}
+import org.scalatest.tags.{ChromeBrowser, FirefoxBrowser}
+import org.scalatestplus.selenium.{Driver, WebBrowser}
 
 trait WikipediaSuite extends AnyFunSuiteLike with should.Matchers {
   this: WebBrowser with Driver =>
@@ -16,10 +16,7 @@ trait WikipediaSuite extends AnyFunSuiteLike with should.Matchers {
 }
 
 @ChromeBrowser
-class ChromeWikipediaSuite extends WikipediaSuite with Chrome
+class ChromeWikipediaSuite extends WikipediaSuite with LazyChrome
 
 @FirefoxBrowser
-class FirefoxWikipediaSuite extends WikipediaSuite with Firefox
-
-@SafariBrowser
-class SafariWikipediaSuite extends WikipediaSuite with Safari
+class FirefoxWikipediaSuite extends WikipediaSuite with LazyFirefox

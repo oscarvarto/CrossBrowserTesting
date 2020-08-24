@@ -3,9 +3,9 @@ package io.oscarvarto
 import org.scalatest.Suite
 import org.scalatest.funsuite.{AnyFunSuite, AnyFunSuiteLike}
 import org.scalatest.matchers.should
-import org.scalatestplus.selenium.{Chrome, Driver, WebBrowser}
+import org.scalatestplus.selenium.{Driver, WebBrowser}
 
-abstract class TitleSuite(val url: String, expectedTitle: String) extends AnyFunSuiteLike with should.Matchers  {
+abstract class TitleSuite(val url: String, expectedTitle: String) extends AnyFunSuiteLike with should.Matchers {
   this: WebBrowser with Driver =>
 
   test(s"$url should have title $expectedTitle") {
@@ -26,6 +26,6 @@ class ParallelTitleSuite extends AnyFunSuite {
   )
 
   override def nestedSuites: IndexedSeq[Suite] = titleData.map{ case (url, expectedTitle) =>
-    new TitleSuite(url, expectedTitle) with Chrome { }
+    new TitleSuite(url, expectedTitle) with LazyChrome { }
   }
 }
