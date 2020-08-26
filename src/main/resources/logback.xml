@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    <appender name="SIFT" class="ch.qos.logback.classic.sift.SiftingAppender">
+        <discriminator>
+            <key>logFileName</key>
+            <defaultValue>parallelTitle</defaultValue>
+        </discriminator>
+
+        <sift>
+            <appender name="FILE-${logFileName}" class="ch.qos.logback.core.FileAppender">
+                <file>log/${logFileName}.log</file>
+                <append>false</append>
+                <encoder>
+                    <pattern>%logger{15} - %msg%n</pattern>
+                </encoder>
+            </appender>
+        </sift>
+    </appender>
+
+    <root level="debug">
+        <appender-ref ref="SIFT"/>
+    </root>
+</configuration>
